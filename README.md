@@ -23,22 +23,6 @@ subject to $L + S = M$
 
 In this implementation, we use a dataset of electricity prices, which can be loaded from a CSV file. The dataset is transformed into a matrix $M$, where each row corresponds to a day, and each column corresponds to an hour. Visualizing this dataset helps us identify and separate the intermittent price spikes.
 
-```python
-import pandas as pd
-from matplotlib import pyplot as plt
-
-# Load the dataset from "Question1.csv"
-data = pd.read_csv("Question1.csv", index_col=0, parse_dates=True)
-
-# Unroll the daily values to plot the time series, revealing the spikes we aim to separate.
-timeseries = data.stack()
-timeseries.index = timeseries.index.droplevel(1)
-timeseries.plot()
-
-M = data.values
-print(M.shape)  # The matrix M is 244 rows (days) by 24 columns (hours).
-```
-
 ## Implementation
 
 To solve for $L$ and $S$, the low-rank and sparse components of the matrix $M$, we implement the PCA-AD algorithm. The key components of the implementation are as follows:
@@ -49,26 +33,11 @@ To solve for $L$ and $S$, the low-rank and sparse components of the matrix $M$, 
 - The main algorithm iteratively computes $L$ and $S$.
 - Convergence is checked using a specified tolerance.
 
-```python
-import numpy as np
-from numpy.linalg import svd
-
-# Define helper functions (svd_shrink, shrink, soft_threshold)
-
-# Set parameter values (mu, lam, max_iter, tol)
-
-# Initialize variables (L, S, Y)
-
-# Implement the algorithm
-
-# Return the results (L, S)
-```
-
 ## Results
 
 The results of the robust PCA are visualized to show the separated low-rank component ($L$) and sparse component ($S). This provides insights into the underlying regular behavior and the intermittent spikes in the electricity price data.
 
-[!ALT image](https://github.com/fardinbh/RobustPCAImplementation/blob/main/Images/ff.png?raw=true)
+![Alt Text](https://github.com/fardinbh/RobustPCAImplementation/blob/main/Images/ff.png?raw=true)
 
 This implementation allows you to apply the PCA-AD algorithm to analyze and separate components in electricity price data, which can be valuable for understanding and predicting price spikes in the market.
 
