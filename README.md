@@ -68,10 +68,7 @@ from numpy.linalg import svd
 
 The results of the robust PCA are visualized to show the separated low-rank component ($L$) and sparse component ($S). This provides insights into the underlying regular behavior and the intermittent spikes in the electricity price data.
 
-```python
-plt.plot(L.flatten())  # Plot the low-rank component
-plt.plot(S.flatten())  # Plot the sparse component
-```
+[!ALT image](https://github.com/fardinbh/RobustPCAImplementation/blob/main/Images/ff.png?raw=true)
 
 This implementation allows you to apply the PCA-AD algorithm to analyze and separate components in electricity price data, which can be valuable for understanding and predicting price spikes in the market.
 
